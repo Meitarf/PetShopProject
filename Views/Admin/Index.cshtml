@@ -1,0 +1,46 @@
+﻿@model IEnumerable<PetShopProject.Models.Animal>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    @using (Html.BeginForm("New", "Admin"))
+    {
+        <input class="btn" type="submit" value="Add New Animal" />
+    }
+    <br />
+    @await Html.PartialAsync("_Categories")
+    <table>
+        <tr>
+            <th class="admtbl">Picture</th>
+            <th class="admtbl">Name</th>
+            <th class="admtbl">Age</th>
+            <th class="admtbl">Description</th>
+            <th class="admtbl">No. of Comments</th>
+            <th class="admtbl">Edit</th>
+            <th class="admtbl">Delete</th>
+        </tr>
+        @foreach (var animal in Model)
+        {
+            <tr>
+                <td><img src="/Images/@animal.PictureName"/></td>
+                <td>@animal.Name</td>
+                <td>@animal.Age</td>
+                <td>@animal.Description</td>
+                <td>@animal.Comments.Count()</td>
+                @using (Html.BeginForm("Edit", "Admin", new { id = animal.ID }))
+                {
+                    <td><input class ="btn-width" type="submit" value="Edit" /></td>
+                }
+                @using (Html.BeginForm("Delete", "Admin", new { id = animal.ID }))
+                {
+                    <td><input class ="btn-width" type="submit" value="Delete" /></td>
+                }
+            </tr>
+        }
+    </table>
+</body>
+</html>

@@ -1,0 +1,44 @@
+﻿@model PetShopProject.Models.Animal
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Animal</title>
+</head>
+<body>
+    <div class="container text-center">
+        <table class="table" border="1" align="center">
+            <tr>
+                <th>Picture</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Description</th>
+                <th>Category</th>
+
+            </tr>
+            <tr>
+                <td><img src="/Images/@Model.PictureName" /></td>
+                <td>@Model.Name</td>
+                <td>@Model.Age</td>
+                <td>@Model.Description</td>
+                <td>@ViewBag.Category.Name</td>
+            </tr>
+        </table>
+        <br />
+        <table border="1" align="center" width="300">
+            <tr>
+                <th width="200">Comments</th>
+            </tr>
+            @foreach (var comment in Model.Comments.OrderBy(c => c.ID))
+            {
+                <tr><td> @comment.CommentContent</td></tr>
+            }
+        </table> <br />
+        <form method="post" asp-action="Animal" asp-route-id="@Model.ID">
+            <label for="comment">Add a New Comment: </label>
+            <input type="text" name="comment" />
+            <input type="submit" value="Submit" />
+        </form>
+        </div>
+</body>
+</html>

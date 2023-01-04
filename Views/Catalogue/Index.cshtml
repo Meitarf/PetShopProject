@@ -1,0 +1,33 @@
+﻿@model IEnumerable<PetShopProject.Models.Animal>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @await Html.PartialAsync("_Categories")
+    <table class="table" >
+        <tr>
+            <th>Picture</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>No. of Comments</th>
+            <th>More Information</th>
+        </tr>
+        @foreach (var animal in Model)
+        {
+            <tr>
+                <td><img src="/Images/@animal.PictureName"/></td>
+                <td>@animal.Name</td>
+                <td>@animal.Description</td>
+                <td>@animal.Comments.Count()</td>
+                @using (Html.BeginForm("Animal", "Catalogue", new { id = animal.ID }))
+                {
+                    <td><input class="btn" type="submit" value="Click For More Info"/></td>
+                }
+            </tr>
+        }
+    </table>
+</body>
+</html>

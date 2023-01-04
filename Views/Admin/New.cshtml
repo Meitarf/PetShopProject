@@ -1,0 +1,35 @@
+﻿@model PetShopProject.Models.Animal
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>New</title>
+</head>
+<body>
+    <div>
+        <form class="form" method="post" enctype="multipart/form-data">
+            <br>
+            @Html.LabelFor(model => model.Name)
+            <input type="text" asp-for="Name" /> <br>
+            @Html.LabelFor(model => model.Age)
+            <input type="text" asp-for="Age" /> <br>
+            @Html.LabelFor(model => model.Description)
+            <input type="text" asp-for="Description" /> <br>
+            <label for="CategoryID">Category </label>
+            <select class="select" asp-for="CategoryID">
+                <option value="1">Mammal</option>
+                <option value="2">Bird</option>
+                <option value="3">Fish</option>
+            </select>
+            <br />
+            <label for="PictureName">Add a Picture </label>
+            <input name="imageFile" asp-for="PictureName" type="file" accept="image/*" />
+            <br />
+            <input class="submit" type="submit" value="Submit" asp-action="NewPost" />
+            <div>
+                @Html.ValidationSummary()
+            </div>
+        </form>
+    </div>
+</body>
+</html>
