@@ -1,5 +1,5 @@
 # PetShopProject
-ASP.Net Core MVC using MSSQL DB with Entity Framework Core. Information from controllers to the views is passed by **CRUD** opertions.
+ASP.Net Core MVC using MSSQL DB with Entity Framework Core. Information from controllers to the views is passed by **CRUD** operations.
 ## Installation
 Download and run PetShopProject.sln on Visual Studio.
 #### Connection String
